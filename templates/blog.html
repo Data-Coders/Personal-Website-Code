@@ -21,7 +21,7 @@
         </div>
     </div>
  
-<a href="/edit/0"><button class="btn btn-primary" style="margin-left: 85%">Add Your Blog Here</button></a>
+<a href="check"><button class="btn btn-primary" style="margin-left: 85%">Add Your Blog Here</button></a>
 
     <section class="blog_area section-padding">
         <div class="container">
@@ -45,7 +45,7 @@
                                 <p>{{post.content}}...</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <p>Posted By - {{posts.posted}}</p>
+                                    <p>Posted By - {{post.posted}}</p>
                                 </ul>
                             </div>
                         </article>
@@ -110,6 +110,7 @@
                                     </a>
                                     <p>{{post.date}}</p>
                                 </div>
+                                <br>
                               {% endfor %}
                             </div>
                         </aside>

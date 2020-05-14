@@ -38,6 +38,7 @@
     "admin": "iamroot",
     "adminpass": "icode@0",
     "adding": "Add",
-    "editing": "Edit"
+    "editing": "Edit",
+    "test": ""
   }
 }

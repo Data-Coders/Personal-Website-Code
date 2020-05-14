@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}">
 
-    <title>{{params['name']}} | Login</title>
+    <title>{{params['name']}} | SignUp</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -29,7 +29,10 @@
       <label for="inpuutEmail" class="sr-only">User Email</label>
       <input type="email" id="inpuutEmail" class="form-control" placeholder="User Email" name="emai" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="psswdd" required>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="psswdd" required><select name="province">
+  <option value="AB">Male
+  <option value="BC">Female
+</select>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me

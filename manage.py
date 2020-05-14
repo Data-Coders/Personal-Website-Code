@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 import datetime
 import json
+userr  = 0
+yo =1
 
 with open('config.json', 'r') as c:
     params = json.load(c)['params']
@@ -41,6 +43,7 @@ class Posts(db.Model):
     content = db.Column(db.String(220), nullable=False)
     date = db.Column(db.String(20), nullable=False)
     img_file = db.Column(db.String(20), nullable=True)
+    posted = db.Column(db.String(20), nullable = True)
 
 
 class Users(db.Model):
@@ -48,6 +51,8 @@ class Users(db.Model):
     username = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(220), nullable=False)
+    gender = db.Column(db.String(20), nullable=True)
+    contri = db.Column(db.String(20), nullable=True)
 
 @app.route('/')
 def hello_world():
@@ -129,9 +134,11 @@ def editing(sno):
         req_content = request.form.get('cont')
         req_imgfle = request.form.get('fi')
         date = datetime.datetime.now()
+        poste = session['user']
 
         if sno == '0':
-            post = Posts(title=req_title, slug=req_slug, content=req_content, date=date, img_file=req_imgfle, form=form, nonlogin=nonlogin)
+            post = Posts(title=req_title, slug=req_slug, content=req_content, date=date, img_file=req_imgfle, posted=poste)
+            print(poste)
             db.session.add(post)
             db.session.commit()
         else:
@@ -143,15 +150,26 @@ def editing(sno):
             post.date = date
             db.session.commit()
     post = Posts.query.filter_by(sno=sno).first()
-    return render_template('edit.html', params=params, post=post, sno=sno, val=val)
+    return render_template('edit.html', params=params, post=post, sno=sno, val=val, form=form, nonlogin=nonlogin)
 
 @app.route('/edit/blog')
 def velle():
     redirect('/blog')
 
+@app.route('/check')
+def checkc():
+    if 'user' in session:
+        print(session['user'])
+        return redirect('/edit/0')
+    else:
+        return redirect('/member')
+
 @app.route('/logout')
 def logout():
     session.pop('user')
+    global userr
+    userr = 0
+    print(userr)
     return redirect('/')
 
 @app.route('/LogOut')
@@ -181,6 +199,22 @@ def about():
         form = 'Login'
     return render_template('about.html', params=params, form=form, nonlogin=nonlogin)
 
+@app.route('/dashboard')
+def user_dashboard():
+    if 'user' in session:
+        nonlogin = 'LogOut'
+        form = 'Logout'
+        sno = Posts.query.order_by(-Posts.sno).first()
+        posts = Posts.query.filter_by(posted=session['user'])
+        print(userr)
+        return render_template('user_dashboard.html', params=params, posts=posts, form=form, nonlogin=nonlogin, sno=sno)
+    else:
+        return render_template('member.html', params=params)
+
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('404.html')
+
 
 @app.route('/blog')
 def blog():
@@ -192,6 +226,10 @@ def blog():
         form  = 'Login'
     posts = Posts.query.filter_by().all()[-3:]
     return render_template('blog.html', params=params, posts=posts, form=form, nonlogin=nonlogin)
+
+@app.route('/offer')
+def offers():
+    return render_template('offer.html', params=params)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -207,16 +245,21 @@ def signup():
         nonlogin = 'LogOut'
         form = 'Logout'
         session['user'] = usr
-        return render_template('index.html', params=params, form=form, nonlogin=nonlogin)
+        global userr
+        userr = userr + 1
+        return render_template('index.html', params=params, form=form, nonlogin=nonlogin, user=userr)
 
     return render_template('userlogin.html', params=params)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def adminlog():
+    global userr
     if 'user' in session and session['user'] == params['admin']:
         posts = Posts.query.filter_by().all()
-        return render_template('admin.html', params=params, posts=posts)
+        sno = Posts.query.order_by(-Posts.sno).first()
+        print(userr)
+        return render_template('dashboard.html', params=params, posts=posts, sno=sno,  user=userr)
 
     if request.method == 'POST':
         username = request.form.get('usrnme')
@@ -224,15 +267,47 @@ def adminlog():
         if username == params['admin'] and password == params['adminpass']:
             session['user'] = username
             posts = Posts.query.filter_by().all()
-            return render_template('admin.html', params=params, posts=posts)
+            sno = Posts.query.order_by(-Posts.sno).first()
+            return render_template('dashboard.html', params=params, posts=posts, sno=sno, user=userr)
     else:
         return render_template('login.html', params=params)
 
     return render_template('login.html', params=params)
 
+@app.route('/adminlogs')
+def adminlogs():
+    posts = Posts.query.filter_by().all()
+    form = 'Logout'
+    nonlogin = 'logout'
+    return render_template('admin.html', params=params, posts=posts, form=form, nonlogin=nonlogin)
+
+@app.route('/userlogs', methods=['GET', 'POST'])
+def userposts():
+    text='userlogs'
+    if request.method == 'POST':
+        usernme = request.form.get('usrnme')
+        passwd = request.form.get('psswdd')
+        usr = Users.query.filter_by(username=usernme).first()
+        if (usr):
+            if (usr.password == passwd):
+                session['user'] = usernme
+                form = 'Logout'
+                nonlogin = 'LogOut'
+                posts = Posts.query.filter_by(posted=usernme).all()
+                return render_template('userlogs.html', params=params, form=form, nonlogin=nonlogin, posts=posts, text=text, user=usernme)
+            else:
+                msg =  'Password is Incorrect'
+                return render_template('forusername.html', params=params, msg=msg, text=text)
+        else:
+            msg = 'UserName Is Incorrect'
+            return render_template('forusername.html', params=params, msg=msg, text=text)
+    msg = 'Enter Your Credentials'
+    return render_template('forusername.html', params=params, msg = msg, text=text)
+
 
 @app.route('/member', methods = ['GET', 'POST'])
 def member():
+    text='member'
     if request.method == 'POST':
         usernme = request.form.get('usrnme')
         passwd = request.form.get('psswdd')
@@ -244,9 +319,12 @@ def member():
                 nonlogin = 'LogOut'
                 return render_template('index.html', params=params, form=form, nonlogin=nonlogin)
             else:
-                return render_template('member.html', params=params)
+                msg = 'Password is Incorrect'
+                return render_template('member.html', params=params, msg=msg,text=text)
         else:
-            return render_template('member.html', params=params)
-    return render_template('member.html', params=params)
+            msg = 'UserName Is Incorrect'
+            return render_template('member.html', params=params, msg=msg, text=text)
+    msg = 'Enter Your Credentials'
+    return render_template('member.html', params=params, msg=msg, text=text)
 
-app.run(debug=True)
+app.run()
