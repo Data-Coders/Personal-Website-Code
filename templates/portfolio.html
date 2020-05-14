@@ -1,0 +1,173 @@
+
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}Portfolio{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="bradcam_area breadcam_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Portfolio</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+
+    <!-- gallery -->
+    <div class="gallery_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-50">
+                        <h3>Our Recent Works</h3>
+                        <p>Here You can get a glimpse of my Projects with just an, <br> overview and you can also get
+                            all the code of the below projects on my <a
+                                href="https://github.com/alexmercerr07">GitHub</a> Profile.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row grid">
+                <div class="col-xl-4 col-lg-6 grid-item cat1 col-md-6">
+                    <div class="single-gallery mb-20">
+                        <div class="portfolio-img">
+                            <img src="{{ url_for('static', filename='img/gallery/1.png') }}" alt="">
+                        </div>
+                        <div class="gallery_hover">
+                            <a href="https://github.com/alexmercerr07/Website-with-Backend-code" class="hover_inner">
+                                <h3>Web App Based On Flask</h3>
+                                <span>This Project was built due to Freelancing Work but I moulded it to personal one so
+                                    that I can use it for my personal Use</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 grid-item cat3 cat4 col-md-6">
+                    <div class="single-gallery mb-20">
+                        <div class="portfolio-img">
+                            <img src="{{ url_for('static', filename='img/gallery/2.png') }}" alt="">
+                        </div>
+                        <div class="gallery_hover">
+                            <a href="https://github.com/alexmercerr07/MP3-Player" class="hover_inner">
+                                <h3>MP3 Player(offline)</h3>
+                                <span>This Project was Built when I was learning Frameworks like pandas and numpy and
+                                    others</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 grid-item cat4 col-md-6">
+                    <div class="single-gallery mb-20">
+                        <div class="portfolio-img">
+                            <img src="{{ url_for('static', filename='img/gallery/3.png') }}" alt="">
+                        </div>
+                        <div class="gallery_hover">
+                            <a href="https://github.com/alexmercerr07/Self-Replicating-Virus" class="hover_inner">
+                                <h3>Self-Replicating Virus</h3>
+                                <span>This Project was built in my free time as Then I was a little bored and wanted to
+                                    do something interesting.</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-6 grid-item cat2 col-md-6">
+                    <div class="single-gallery mb-20">
+                        <div class="portfolio-img">
+                            <img src="{{ url_for('static', filename='img/gallery/4.png') }}" alt="">
+                        </div>
+                        <div class="gallery_hover">
+                            <a href="https://github.com/alexmercerr07/Website-Code" class="hover_inner">
+                                <h3>Web-Site With JavaScript</h3>
+                                <span>I created this Web-site with JavaScript as my first JavaScript Project</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 grid-item cat2 col-md-6">
+                    <div class="single-gallery mb-20">
+                        <div class="portfolio-img">
+                            <img src="{{ url_for('static', filename='img/gallery/5.png') }}" alt="">
+                        </div>
+                        <div class="gallery_hover">
+                            <a href="https://github.com/alexmercerr07/Operating-System" class="hover_inner">
+                                <h3>Operating System</h3>
+                                <span>This Software was created as a fun Project but I intentionally converted into a
+                                    Project which contains all the Programs Which a basic C++ Developer Knows.</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="More_Works_btn text-center">
+                        <a class="boxed-btn3-green-2" href="https://github.com/alexmercerr07">More Works are on
+                            GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ gallery -->
+
+    <!-- Testimonial Section -->
+    <div class="testmonial_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="testmonial_active2 owl-carousel">
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>The Way he delivers his projects and all are just lightning fast.</p>
+                            <div class="author_name text-center">
+                                <h4>Shay Cormac</h4>
+                                <span> Gamer</span>
+                            </div>
+                        </div>
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>I prefer the ideas which you bring to develop sucha good looking Websites.</p>
+                            <div class="author_name text-center">
+                                <h4>Alex Mercer</h4>
+                                <span> Front End Developer</span>
+                            </div>
+                        </div>
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>Why don't you come wth us in Google we would just love to work with people like you.</p>
+                            <div class="author_name text-center">
+                                <h4>Robert </h4>
+                                <span> @Google</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial Section Ends Here -->
+
+   <!-- project  -->
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>{{params['ph']}}</h3>
+                        <p>{{params['pb']}}</p>
+                        <a href="/contact" class="boxed-btn3-white">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

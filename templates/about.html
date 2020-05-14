@@ -1,0 +1,194 @@
+
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}Portfolio{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>About Us</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+
+        <!-- about wrap  -->
+    <div class="about_wrap_area about_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="single_service_wrap text-center">
+                        <img src="{{ url_for('static', filename='img/svg_icon/controls.svg') }}" alt="">
+                        <h3>{{params['whi']}}</h3>
+                        <p>{{params['whi-b']}} </p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="single_service_wrap text-center">
+                        <img src="{{ url_for('static', filename='img/svg_icon/bar-chart.svg') }}" alt="">
+                        <h3>{{params['whii']}}</h3>
+                        <p>{{params['whii-b']}} </p>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-lg-4">
+                    <div class="single_service_wrap text-center">
+                        <img src="{{ url_for('static', filename='img/svg_icon/puzzle.svg') }}" alt="">
+                        <h3>{{params['whiii']}}</h3>
+                        <p>{{params['whiii-b']}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ about wrap  -->
+
+
+    <!-- about  -->
+    <div class="about_area ">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters align-items-center">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="about_image">
+                        <img src="{{ url_for('static', filename='img/about/about.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="about_info">
+                        <h3>{{params['ab-head']}}</h3>
+                        <p>{{params['ab-b']}}</p>
+                        <ul>
+                            <li> {{params['about-iiii']}} </li>
+                            <li> {{params['about-ii']}} </li>
+                            <li> {{params['about-iii']}}</li>
+                        </ul>
+
+                        <div class="about_btn">
+                            <a class="boxed-btn3" href="about.html">About Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ about  -->
+
+    <!-- counter  -->
+    <div class="counter_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_counter text-center">
+                        <h3> <span class="counter">8</span> <span>+</span> </h3>
+                        <span>Total Projects</span>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_counter text-center">
+                        <h3> <span class="counter">3</span> </h3>
+                        <span>On Going Projects</span>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_counter text-center">
+                        <h3> <span class="counter">90</span> <span>%</span> </h3>
+                        <span>Job Success</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ counter  -->
+
+
+      <!-- financial_solution -->
+    <div class="financial_solution_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="financial_active owl-carousel">
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhi']}}</h3>
+                            <p>{{params['fhi-b']}}</p>
+                        </div>
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhii']}}</h3>
+                            <p>{{params['fhii-b']}}</p>
+                        </div>
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhiii']}}</h3>
+                            <p>{{params['fhiii-b']}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="finance_thumb">
+                        <img src="{{ url_for('static', filename='img/about/finance.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ financial_solution -->
+
+   <!-- Testimonial Section -->
+   <div class="testmonial_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <div class="testmonial_active2 owl-carousel">
+                    <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                        <p>The Way he delivers his projects and all are just lightning fast.</p>
+                        <div class="author_name text-center">
+                            <h4>Shay Cormac</h4>
+                            <span> Gamer</span>
+                        </div>
+                    </div>
+                    <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                        <p>I prefer the ideas which you bring to develop sucha good looking Websites.</p>
+                        <div class="author_name text-center">
+                            <h4>Alex Mercer</h4>
+                            <span> Front End Developer</span>
+                        </div>
+                    </div>
+                    <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                        <p>Why don't you come wth us in Google we would just love to work with people like you.</p>
+                        <div class="author_name text-center">
+                            <h4>Robert </h4>
+                            <span> @Google</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Section Ends Here -->
+
+   <!-- project  -->
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>{{params['ph']}}</h3>
+                        <p>{{params['pb']}}</p>
+                        <a href="/contact" class="boxed-btn3-white">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

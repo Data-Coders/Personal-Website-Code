@@ -1,0 +1,152 @@
+
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}Blog{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="bradcam_area breadcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Blog</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+<a href="/edit/0"><button class="btn btn-primary" style="margin-left: 85%">Add Your Blog Here</button></a>
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+
+                    {% for post in posts %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{ url_for('static', filename='mg/about/finance.jpg') }}" alt="">
+                                <a class="blog_item_date">
+                                <p>{{post.date}}</p>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="/post/{{post.slug}}">
+                                    <h2>{{post.title}}</h2>
+                                </a>
+                                <p>{{post.content}}...</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                    <p>Posted By - {{posts.posted}}</p>
+                                </ul>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+
+
+
+
+
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                            onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Search</button>
+                            </form>
+                        </aside>
+
+                        
+
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Recent Post</h3>
+                            <div class="media post_item">
+                              {% for post in posts %}
+                                <img src="img/post/post_1.png" alt="post">
+                                <div class="media-body">
+                                    <a href="/post/{{post.slug}}">
+                                        <h3>{{post.title}}</h3>
+                                    </a>
+                                    <p>{{post.date}}</p>
+                                </div>
+                              {% endfor %}
+                            </div>
+                        </aside>
+                        
+
+
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Newsletter</h4>
+
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Subscribe</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- project  -->
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>{{params['ph']}}</h3>
+                        <p>{{params['pb']}}</p>
+                        <a href="/contact" class="boxed-btn3-white">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

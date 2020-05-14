@@ -1,0 +1,167 @@
+
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}Service{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+    
+    <!-- header-end -->
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area breadcam_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Services</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+
+    <!-- service_area_start -->
+    <div class="service_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-50">
+                        <h3>{{params['ser-head']}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_1">
+                        <div class="service_hover">
+                            <img src="{{ url_for('static', filename='img/svg_icon/legal-paper.svg') }}" alt="">
+                            <h3>{{params['ar1']}}</h3>
+                            <div class="hover_content">
+                                <div class="hover_content_inner">
+                                    <h4>{{params['ar1']}}</h4>
+                                    <p>{{params['ar1-b']}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_2">
+                        <div class="service_hover">
+                            <img src="{{ url_for('static', filename='img/svg_icon/case.svg') }}" alt="">
+                            <h3>{{params['ar2']}}</h3>
+                            <div class="hover_content">
+                                <div class="hover_content_inner">
+                                    <h4>{{params['ar2']}}</h4>
+                                    <p>{{params['ar2-b']}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="single_service service_bg_3">
+                        <div class="service_hover">
+                            <img src="{{ url_for('static', filename='img/svg_icon/survey.svg') }}" alt="">
+                            <h3>{{params['ar3']}}</h3>
+                            <div class="hover_content">
+                                <div class="hover_content_inner">
+                                    <h4>{{params['ar3']}}</h4>
+                                    <p>{{params['ar3-b']}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- service_area_end -->
+
+    <!-- financial_solution -->
+    <div class="financial_solution_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="financial_active owl-carousel">
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhi']}}</h3>
+                            <p>{{params['fhi-b']}}</p>
+                        </div>
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhii']}}</h3>
+                            <p>{{params['fhii-b']}}</p>
+                        </div>
+                        <div class="single_finalcial_wrap">
+                            <h3>{{params['fhiii']}}</h3>
+                            <p>{{params['fhiii-b']}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="finance_thumb">
+                        <img src="{{ url_for('static', filename='img/about/finance.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ financial_solution -->
+
+
+    <!-- Testimonial Section -->
+    <div class="testmonial_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="testmonial_active2 owl-carousel">
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>The Way he delivers his projects and all are just lightning fast.</p>
+                            <div class="author_name text-center">
+                                <h4>Shay Cormac</h4>
+                                <span> Gamer</span>
+                            </div>
+                        </div>
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>I prefer the ideas which you bring to develop sucha good looking Websites.</p>
+                            <div class="author_name text-center">
+                                <h4>Alex Mercer</h4>
+                                <span> Front End Developer</span>
+                            </div>
+                        </div>
+                        <div class="single_slider text-center" data-dot='<img src="{{ url_for('static', filename='img/testmonial/1.png') }}" alt="#" '>
+                            <p>Why don't you come wth us in Google we would just love to work with people like you.</p>
+                            <div class="author_name text-center">
+                                <h4>Robert </h4>
+                                <span> @Google</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial Section Ends Here -->
+
+   <!-- project  -->
+    <div class="project_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="project_info text-center">
+                        <h3>{{params['ph']}}</h3>
+                        <p>{{params['pb']}}</p>
+                        <a href="/contact" class="boxed-btn3-white">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
