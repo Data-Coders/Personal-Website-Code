@@ -209,7 +209,7 @@ def signup():
         session['user'] = usr
         return render_template('index.html', params=params, form=form, nonlogin=nonlogin)
 
-    return render_template('signup.html', params=params)
+    return render_template('userlogin.html', params=params)
 
 
 @app.route('/login', methods=['GET', 'POST'])
